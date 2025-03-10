@@ -1,0 +1,4 @@
+html body {
+    background-color: var(--background);
+    padding-top: 40px;
+}

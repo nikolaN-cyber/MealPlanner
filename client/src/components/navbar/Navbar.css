@@ -1,0 +1,8 @@
+.custom-navbar {
+    background-color: var(--highlight-turquoise);
+}
+
+.custom-btn {
+    background-color: var(--warning-orange) !important;
+    color: var(--light-text) !important;
+}
