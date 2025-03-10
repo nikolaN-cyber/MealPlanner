@@ -15,7 +15,7 @@ Before you run the project, you need to have the following installed:
 
 - **Node.js** - For running the frontend part of the application.
 - **Docker** - For running the containers for the backend and database.
-- **PostgreSQL** - The database used in this project.
+- **PostgreSQL** - The database used in this project. If you run postgresql through docker, you don't need postgresql server, image you use for creating container has everything needed to run database.
 
 ## Installation
 
@@ -43,6 +43,7 @@ Before you run the project, you need to have the following installed:
       ```bash
       docker-compose up
       ```
+    - You can access this container with PgAdmin4. Just open and register new server. Since port is exposed, you can use localhost or 127.0.0.1 and credentials that you have provided through .env. Since there is volume provided, database will be persistant and you don't have to worry about container creating new database every time it runs.
 
 ## Running the Project
 
