@@ -30,4 +30,17 @@ export class UserController {
     async edit(@Param('id') id: number, @Body() updateUser: UserUpdateDTO) {
         return this._userService.editUser(id, updateUser)
     }
+
+    @UseGuards(JwtAuthGuard)
+    @Get('profile/:id')
+    async getProfile(@Param('id') id:number) {
+        return this._userService.findOneById(id);
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Patch('set-diet-plan/:id')
+    async setDietPlan(@Param('id') id:number, @Body() body: { dietGoal: string }) {
+        const {dietGoal} = body
+        return this._userService.setDietPlan(id, dietGoal);
+    }
 }

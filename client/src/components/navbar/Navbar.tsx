@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom"
 import './Navbar.css'
+import { useState } from "react"
+import { useAuth } from "../../hooks/useAuth"
 
 const Navbar = () => {
 
+    const {logout} = useAuth()
     const navigate = useNavigate()
+    const [error, setError] = useState('')
 
     const openLogin = () => {
         navigate('login')
@@ -11,6 +15,15 @@ const Navbar = () => {
 
     const openRegister = () => {
         navigate('register')
+    }
+
+    const handleLogout = () => {
+        try {
+            logout()
+            navigate('/login')
+        } catch (error) {
+            
+        }
     }
 
     return (
@@ -35,12 +48,13 @@ const Navbar = () => {
                     <div className="d-flex mt-2">
                         <ul className="navbar-nav me-auto">
                         <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Dropdown</a>
+                            <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">User</a>
                             <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">My profile</a></li>
-                                <li><a className="dropdown-item" href="#">My tickets</a></li>
+                                <li><a className="dropdown-item" href="/my-profile">My profile</a></li>
+                                <li><a className="dropdown-item" href="#">My meal plans</a></li>
+                                <li><a className="dropdown-item" href="#">Favourite recipes</a></li>
                                 <li><hr className="dropdown-divider"></hr></li>
-                                <li><a className="dropdown-item" href="#">Logout</a></li>
+                                <li onClick={handleLogout}><a className="dropdown-item" href="#">Logout</a></li>
                             </ul>
                         </li>
                         </ul>

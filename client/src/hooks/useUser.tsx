@@ -1,4 +1,4 @@
-import { register } from "../services/UserService";
+import { register, getProfile, setDietGoal } from "../services/UserService";
 import { RegisterUser } from "../models/User";
 
 export const useUser = () => {
@@ -6,7 +6,17 @@ export const useUser = () => {
         return await register(userData);
     }
 
+    const handleGetProfile = async () => {
+        return await getProfile();
+    }
+
+    const handleSetDietPlan = async (dietGoal: string) => {
+        return await setDietGoal(dietGoal);
+    }
+
     return {
-        handleRegister
+        handleRegister,
+        handleGetProfile,
+        handleSetDietPlan
     }
 }

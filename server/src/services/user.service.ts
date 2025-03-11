@@ -59,6 +59,16 @@ export class UserService {
         return user
     }
 
+    async setDietPlan(id: number, dietPlan: string) : Promise<User> {
+        const user = await this._userRepository.findOneBy({ id })
+        if (!user) {
+            throw new NotFoundException()
+        }
+        user.dietGoal = dietPlan;
+        await this._userRepository.save(user)
+        return user
+    }
+
     async findByEmail(email: string): Promise<User> {
         const user = await this._userRepository.findOne({ where: { email: email } })
         if (!user) {

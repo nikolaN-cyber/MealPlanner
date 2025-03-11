@@ -50,6 +50,5 @@ const AccountSetup = () => {
             </div>
         </div>
     )
-
 }
 export default AccountSetup
